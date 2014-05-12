@@ -42,21 +42,21 @@ def get_guard_formula(transition, automata):
 
 # F(p,r2) = p /\ R /\ l't(p,r2)
 
-def get_f_constraint(e_location1, e_location2, i_location, interface, environment):
-    timed_design_i = get_timed_design(i_location, interface)
-    timed_design_e = get_timed_design(e_location1, environment)
-    if (is_transition(e_location1, e_location2, list(environment.transitions)) == True):
-        lt = get_guard_formula((e_location1, e_location2), environment)
-        condition1 = timed_design_e.precondition
-        condition2 = timed_design_i.postcondition
+def get_f_constraint(environment_location1, environment_location2, interfacenvironment_location, interface, environment):
+    timed_design_interface = get_timed_design(interfacenvironment_location, interface)
+    timed_design_environment = get_timed_design(environment_location1, environment)
+    if (is_transition(environment_location1, environment_location2, list(environment.transitions)) == True):
+        lt = get_guard_formula((environment_location1, environment_location2), environment)
+        condition1 = timed_design_environment.precondition
+        condition2 = timed_design_interface.postcondition
         constraint = "And(" + condition1 + "," + condition2 + "," + lt + ")"
         return constraint
 
 # lt(q,r1) /\ F(p,r2)
 
-def get_lt(i_location1, i_location2, interface):
-    if (is_transition(i_location1, i_location2, list(interface.transitions)) == True):
-        lt = interface.lt[i_location1, i_location2]
+def get_lt(interfacenvironment_location1, interfacenvironment_location2, interface):
+    if (is_transition(interfacenvironment_location1, interfacenvironment_location2, list(interface.transitions)) == True):
+        lt = interface.lt[interfacenvironment_location1, interfacenvironment_location2]
         return lt
 
 def existed_pair(location1, location2, location_pairs):
@@ -82,31 +82,31 @@ def check_plugability (interface, environment):
       
         # Get timed design corresponding to q and p state
         
-        timed_design_i = interface.ls[q]
-        timed_design_e = environment.ls[p]
+        timed_design_interface = interface.ls[q]
+        timed_design_environment = environment.ls[p]
       
         # Check if ls(q) is refinement of ls(q')
     
-        if check_refine_ls(timed_design_i, timed_design_e) is False:
+        if check_refine_ls(timed_design_interface, timed_design_environment) is False:
             print "No"
             return
         else:
             # iterate locations in environment
-            for e_location in environment.locations:
-                if(is_transition(p, e_location, environment.transitions)):
-                    f = get_f_constraint(p, e_location, q, interface, environment)
-                    if(check_sat(f) == True):
-                        for i_location in interface.locations:
-                            if(is_transition(q, i_location, interface.transitions)):
-                                lt = get_lt(q, i_location, interface)
+            for environment_location in environment.locations:
+                if(is_transition(p, environment_location, environment.transitions)):
+                    f = get_f_constraint(p, environment_location, q, interface, environment)
+                    if(check_satisfiablity(f) == True):
+                        for interfacenvironment_location in interface.locations:
+                            if(is_transition(q, interfacenvironment_location, interface.transitions)):
+                                lt = get_lt(q, interfacenvironment_location, interface)
                                 constraint = get_and_constraint(lt, f)
-                                if (check_sat(constraint) is True):
+                                if (check_satisfiablity(constraint) is True):
                                     constraint = get_imply_constraint(f, lt)
-                                    if (check_sat(constraint) is False):
+                                    if (check_satisfiablity(constraint) is False):
                                         print "No"
                                         return
-                                    elif (existed_pair(i_location, e_location, location_pairs) == False):
-                                        location_pairs.update({(i_location, e_location):"unmarked"})
+                                    elif (existed_pair(interfacenvironment_location, environment_location, location_pairs) == False):
+                                        location_pairs.update({(interfacenvironment_location, environment_location):"unmarked"})
                                         
                                                                                
     

@@ -15,8 +15,7 @@ timed_design3 = timed_design("x >= 12", "y > x", (1, 6))
 guard_formula1 = "Not(x==y)"
 guard_formula2 = "x>y"
 guard_formula3 = "x+y > 5"
-
-        
+     
 interface = automata(locations=set(["q1", "q2", "q3"]),
                      inputs=set(["x"]),
                      outputs=set(["y"]),
@@ -35,7 +34,6 @@ guard_formula4 = "Not(x==y)"
 guard_formula5 = "x>y"
 guard_formula6 = "x+y > 5"
 
-
 environment = automata(locations=set(["h1", "h2", "h3"]),
                      inputs=set(["x"]),
                      outputs=set(["y"]),
@@ -46,4 +44,3 @@ environment = automata(locations=set(["h1", "h2", "h3"]),
                      )
 
 check_plugability(interface, environment)
-
