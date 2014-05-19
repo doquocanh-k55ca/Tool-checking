@@ -1,0 +1,160 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css">
+
+<title></title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> 
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+
+</head>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+	<!-- Form Name -->
+	<div class="text-center">
+	<legend>Pluggability</legend>
+	</div>
+      <!--Sidebar content-->
+	 <form class="form-horizontal" action="/check/" method="post">
+	  	<fieldset>
+		  	<div class="row-fluid">
+		  		<div class="span6">
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="locations1">locations</label>
+					  <div class="controls">
+						<input id="id_locationsOne" name="locations1" type="text" class="input-xlarge" placeholder="Enter your locations" class="input-xlarge" required="">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="inputs1">Inputs</label>
+					  <div class="controls">
+						<input id="id_inputsOne" name="inputs1" type="text" placeholder="Enter your input set" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="outputs1">Outputs</label>
+					  <div class="controls">
+						<input id="id_outputsOne" name="outputs1" type="text" placeholder="Enter your output set" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="initial_state1">Initial State</label>
+					  <div class="controls">
+						<input id="id_initialStateOne" name="initial_state1" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="transitions1">Transitions</label>
+					  <div class="controls">
+						<input id="id_transitionsOne" name="transitions1" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="ls1">Ls</label>
+					  <div class="controls">
+						<input id="id_lsFunctionOne" name="ls1" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="lt1">Lt</label>
+					  <div class="controls">
+						<input id="id_ltFunctionOne" name="lt1" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+		  		</div>
+		  		<div class="span6">
+					<div class="control-group">
+					  <label class="control-label" for="locations2">locations</label>
+					  <div class="controls">
+						<input id="id_locationsTwo" name="locations2" type="text" class="input-xlarge" placeholder="Enter your locations" class="input-xlarge" required="">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="inputs2">Inputs</label>
+					  <div class="controls">
+						<input id="id_inputsTwo" name="inputs2" type="text" placeholder="Enter your input set" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="outputs2">Outputs</label>
+					  <div class="controls">
+						<input id="id_outputsTwo" name="outputs2" type="text" placeholder="Enter your output set (eg: set([" y"])"="" class="input-xlarge">
+					  </div>
+					</div>
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="initial_state2">Initial State</label>
+					  <div class="controls">
+						<input id="id_initialStateTwo" name="initial_state2" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="transitions2">Transitions</label>
+					  <div class="controls">
+						<input id="id_transitionsTwo" name="transitions2" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="ls2">Ls</label>
+					  <div class="controls">
+						<input id="id_lsFunctionTwo" name="ls2" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>
+
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label" for="lt2">Lt</label>
+					  <div class="controls">
+						<input id="id_ltFunctionTwo" name="lt2" type="text" placeholder="placeholder" class="input-xlarge">
+					  </div>
+					</div>	  		
+		  		</div>
+		  	</div>
+
+		</fieldset>
+		<!-- Button (Double) -->
+ 		<div class="text-center">
+			<div class="control-group">
+			  <label class="control-label" for="button1id">Function</label>
+			  <div class="margin">
+				<button type="submit" name="refinement" class="btn btn-success">Refinement</button>
+				<button type="submit" name="pluggability" class="btn btn-primary">Pluggability</button>
+			  </div>
+			</div>
+		</div>
+	</form>
+
+
+    </div>
+  </div>
+ </div>
+
+</html>
